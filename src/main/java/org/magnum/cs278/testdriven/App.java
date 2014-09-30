@@ -115,7 +115,7 @@ public class App {
 	public Event getFirstEventOfMonth(String month) throws Exception {
 		List<Event> events = getParkSpecialPermits();
 		Event ret = new Event("", "", "", "", "");
-		boolean initial = true;
+		boolean initial = false;
 		for(Event event: events){
 			if(event.getMonth().equals(month)){
 				if(!initial){
