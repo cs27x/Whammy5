@@ -2,6 +2,8 @@ package org.magnum.cs278.testdriven;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.Test;
 
 public class EventTest {
@@ -38,5 +40,13 @@ public class EventTest {
 		Event event1 = new Event("name","location","100","mon-14","1/1/1");
 		Event event2 = new Event("name","location","100","mon-14","1/1/1");
 		assertEquals(0,e.compare(event1, event2));
+	}
+	
+	@Test
+	public void testGetSummerEvents() throws Exception {
+		
+		List<Event> events = app.getEventsForMonth("Jan-2014");
+		assertTrue(events.size() == 1);
+		assertEquals("Jan-2014", events.get(0).getMonth());
 	}
 }

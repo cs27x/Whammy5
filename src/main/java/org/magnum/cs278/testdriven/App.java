@@ -147,6 +147,21 @@ public class App {
 		return temp;
 	}
 	
+	public List<Event> getSummerEvents() throws Exception {
+		List<Event> sum;
+		sum = objectMapper.readValue(new URL(
+				PARK_SPECIAL_PERMITS),
+				eventListType
+				);
+		for(Iterator<Event> iter = sum.listIterator(); iter.hasNext();){
+			Event a = iter.next();
+			if (!(a.getMonth().equals("Jun-2014")||a.getMonth().equals("Jul-2014")
+					||a.getMonth().equals("Aug-2014"))){
+				iter.remove();
+			}
+		}
+		return sum;
+	}
 
 	public List<Event> getEventsLargerThan(int i)  throws Exception {
 		// TODO Auto-generated method stub
