@@ -1,4 +1,4 @@
-package org.magnum.cs278.testdriven;
+package src.test.java;
 
 import static org.junit.Assert.*;
 
@@ -12,7 +12,14 @@ public class SecondSevenTests {
 
 	private App a = new App();
 	private List<Event> list;
-	
+
+	@Test
+	public void testGetSummerEvents() throws Exception {
+		
+		List<Event> events = app.getEventsForMonth("Jan-2014");
+		assertTrue(events.size() == 1);
+		assertEquals("Jan-2014", events.get(0).getMonth());
+	}
 	
 	@Test
 	public void testGetEventsLargerThan() throws Exception {
