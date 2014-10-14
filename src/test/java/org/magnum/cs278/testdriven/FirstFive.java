@@ -46,6 +46,8 @@ public class FirstFive {
 			assertNotNull(event.getName());
 			assertNotNull(event.getAttendance());
 			assertNotNull(event.getDate());
+			assertNotNull(event.getMonth());
+			assertNotNull(event.getDateTime());
 		}
 	}
 	
@@ -69,12 +71,15 @@ public class FirstFive {
 	public void testTodaysEvents() throws Exception {
 		List<Event> whatToDo = app.getTodaysEvents();
 		
-		for(Event thingToDo : whatToDo){
-			assertNotNull(thingToDo);
-			assertNotNull(thingToDo.getDate());
+		for(Event event : whatToDo){
+			assertNotNull(event);
+			assertNotNull(event.getDate());
+			assertNotNull(event.getLocation());
+			assertNotNull(event.getName());
+			assertNotNull(event.getAttendance());
 			
 			try{
-				DateTime eventDate = Event.DATE_TIME_FORMAT.parseDateTime(thingToDo.getDate());
+				DateTime eventDate = Event.DATE_TIME_FORMAT.parseDateTime(event.getDate());
 				assertTrue(eventDate.isEqualNow());
 			}catch(IllegalArgumentException arg){
 			}
@@ -105,12 +110,12 @@ public class FirstFive {
 		Event first = app.getFirstEventOfMonth(month);
 		
 		assertTrue(first.getName().equals(testEventName));
+		assertTrue(first.getMonth().equals("Feb-2014"));
 	}
 	
 	// Test 7
 	@Test
 	public void testGetEventsForMonth() throws Exception {
-		
 		List<Event> events = app.getEventsForMonth("Jan-2014");
 		for(Event temp : events) {
 			assertNotNull(temp);
@@ -120,7 +125,6 @@ public class FirstFive {
 			assertNotNull(temp.getDate());
 			assertEquals(temp.getMonth(),"Jan-2014");
 		}
-		
 	}
 }
 
