@@ -225,6 +225,10 @@ public class App {
 	}
 	
 	public List<Event> checkLocation(String location) throws Exception {
+		location = location.trim();
+		if(location.isEmpty() || location == null || location.trim().isEmpty())
+			throw new IllegalArgumentException("location cannot be an empy string or null or whitespace.");
+		
 		List<Event> atDesiredLocation = new ArrayList<Event>();
 		List<Event> evts = getParkSpecialPermits();
 
@@ -238,10 +242,13 @@ public class App {
 	}
 
 	public List<Event> getAllEventsInMonth(String month) throws Exception {
+		month = month.trim();
+		if(month.isEmpty() || month == null || month.trim().isEmpty())
+			throw new IllegalArgumentException("month cannot be an empy string or null or whitespace.");
+		
 		List<Event> toDo = new ArrayList<Event>();
 		List<Event> evts = getParkSpecialPermits();
 
-		DateTime now = DateTime.now();
 		for (Event evt : evts) {
 			if (evt.getMonth().equalsIgnoreCase(month) ) {
 				toDo.add(evt);
