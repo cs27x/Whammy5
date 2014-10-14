@@ -112,8 +112,15 @@ public class FirstFive {
 	public void testGetEventsForMonth() throws Exception {
 		
 		List<Event> events = app.getEventsForMonth("Jan-2014");
-		assertTrue(events.size() == 1);
-		assertEquals("Jan-2014", events.get(0).getMonth());
-	}	
+		for(Event temp : events) {
+			assertNotNull(temp);
+			assertNotNull(temp.getLocation());
+			assertNotNull(temp.getName());
+			assertNotNull(temp.getAttendance());
+			assertNotNull(temp.getDate());
+			assertEquals(temp.getMonth(),"Jan-2014");
+		}
+		
+	}
 }
 
