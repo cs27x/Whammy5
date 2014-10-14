@@ -84,7 +84,7 @@ src/test/... code.
 ## Part 1 - Creating New Features
 
 Each team has inherited a set of source code from one of the merged code bases from the
-second in-class exercise. Your team must add 5 additional features to this code base and
+second in-class exercise. Your team must add 1 additional feature to this code base and
 get the code committed without getting a Whammy. There are a couple of rules:
 
 1. All of your code must eventually make its way into the master branch
@@ -92,11 +92,23 @@ get the code committed without getting a Whammy. There are a couple of rules:
 3. Your code must survive at least 15min of continual Whammy attacks - you need to let
    the instructor know when you want to start the clock
 4. Each time you get a Whammy! commit (that will be the commit message), you must create a
-   test that to thwart that attack from the Whammy. You must also survive at least 1 additional
+   test to thwart that attack from the Whammy. You must also survive at least 1 additional
    minute of Whammy attacks (e.g., if you fail at minute 14, the clock is going to be reset
    to zero and you will need to survive 16min of attacks...fail again and it is 17min,
    etc.).
-5. You are free to commit bugs to other teams repos if they pass their tests (any branch
-   is fair game).
+
+## Some Hints to Make Testing/Protecting Your Code Easier
+
+1. Simplify your code as much as possible -- only use the bare minimum in code to implement
+   a given feature
+2. Break your feature implementations up into small units that can be easily tested. Rather
+   than one large method, use a series of smaller methods with simple logic. 
+3. You might want to add OpenPojo to your build (E.g., testCompile("com.googlecode.openpojo:openpojo:0.4.9"))
+   and use it to validate your pojos:
+   https://github.com/cs27x/mobilecloud-template/blob/master/Common/src/test/java/org/magnum/mobilecloud/video/repository/test/PojoTest.java
+4. There is nothing stopping you from coordinating with other teams
+5. Declaring variables that don't change "final" is a good practice to ensure they don't get 
+   accidently modified
+6. The Whammy won't go after code outside of your master branch -- use this to your advantage
    
 __Good Luck!__
